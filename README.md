@@ -12,6 +12,14 @@
 
 ---
 
+## 🌟 Visual Project Showcase
+
+![MCP Sentinel Mesh Showcase Banner](assets/image.png)
+
+*High-performance Zero-Trust Gateway, Adversarial Defense Shield, and Cryptographic Merkle Audit Ledger for Model Context Protocol (MCP) tool execution.*
+
+---
+
 ## 📌 Mission & Overview
 As autonomous agents gain tool-use agency through the **Model Context Protocol (MCP)**, they expose organizations to critical attack vectors: **tool description poisoning**, **covert prompt injection**, **excessive permissions**, **unrestricted network egress (SSRF)**, and **unreviewed destructive actions**.
 
@@ -27,13 +35,40 @@ As autonomous agents gain tool-use agency through the **Model Context Protocol (
 
 ---
 
-## 🏛️ System Architecture
+## 🏛️ System Architecture (Light Theme)
 
-![Architecture Overview](assets/architecture.svg)
+![Architecture Overview](assets/architecture_light.svg)
 
-### Interception & Verification Flow
+---
 
-![Interception Flow](assets/sequence.svg)
+### Interception & Verification Flow (Light Theme)
+
+![Interception Flow](assets/sequence_light.svg)
+
+---
+
+## 🛡️ 10-Layer Defense Mesh Pipeline
+
+![10-Layer Defense Mesh Pipeline](assets/defense_mesh_light.svg)
+
+---
+
+## 📊 Empirical Adversarial Benchmark Metrics
+
+![Adversarial Benchmark KPI Metrics](assets/benchmarks_light.svg)
+
+Comprehensive benchmarks evaluated across **80 diverse adversarial cases**:
+
+| Metric | Measured Score | Industry Standard |
+|---|---|---|
+| **Adversarial Detection Accuracy** | **97.5%** (78 / 80 Cases) | ~70–85% |
+| **Attack Precision** | **100.0%** (Zero False Positives) | ~80–90% |
+| **Unauthorized Escapes** | **0** (100% Boundary Neutralization) | 0 Required |
+| **Median Interception Latency** | **0.009 ms** (C-level efficiency) | < 5.0 ms |
+| **P95 Latency** | **0.024 ms** | < 10.0 ms |
+| **P99 Latency** | **0.102 ms** | < 25.0 ms |
+
+View the full visual report in **[`evaluation.md`](./evaluation.md)** and the standalone **[`docs/index.html`](./docs/index.html)** dashboard.
 
 ---
 
@@ -86,23 +121,6 @@ uvicorn proxy.server:app --host 0.0.0.0 --port 8000 --reload
 
 ---
 
-## 📊 Benchmark Performance Results
-
-Comprehensive benchmarks evaluated across **80 diverse adversarial cases**:
-
-| Metric | Measured Score | Industry Standard |
-|---|---|---|
-| **Adversarial Detection Accuracy** | **97.5%** (78 / 80 Cases) | ~70–85% |
-| **Attack Precision** | **100.0%** (Zero False Positives) | ~80–90% |
-| **Unauthorized Escapes** | **0** (100% Boundary Neutralization) | 0 Required |
-| **Median Interception Latency** | **0.009 ms** (C-level efficiency) | < 5.0 ms |
-| **P95 Latency** | **0.024 ms** | < 10.0 ms |
-| **P99 Latency** | **0.102 ms** | < 25.0 ms |
-
-View the full visual report in **[`evaluation.md`](./evaluation.md)** and the standalone **[`docs/index.html`](./docs/index.html)** dashboard.
-
----
-
 ## 📁 Repository Structure
 
 ```
@@ -133,7 +151,7 @@ MCP-Sentinel-Mesh/
 ├── frontend/                # React + Vite + TypeScript glassmorphic dashboard
 ├── tests/                   # 11 comprehensive unit and integration test suites
 ├── docs/                    # Complete architectural documentation, guides, and visual report
-├── assets/                  # SVG architecture and sequence diagrams
+├── assets/                  # High-resolution light theme SVG diagrams and image.png
 ├── .github/workflows/       # CI Quality Gate and GitHub Pages deployment
 ├── docker-compose.yml       # Production multi-container orchestration
 └── sentinel.py              # Root CLI entry point

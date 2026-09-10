@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" width="1000" height="560">
+  <defs>
+    <linearGradient id="lightBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+    <linearGradient id="proxyGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+    <filter id="proxyShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#4f46e5" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="560" rx="18" fill="url(#lightBg)" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Header Section -->
+  <rect x="50" y="36" width="36" height="36" rx="8" fill="#4f46e5" />
+  <text x="68" y="60" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">M</text>
+  <text x="98" y="52" fill="#0f172a" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="bold">MCP Sentinel Mesh - Architecture</text>
+  <text x="98" y="72" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="13">Zero-Trust Runtime Policy Proxy, Adversarial Evaluation Framework &amp; Cryptographic Merkle Ledger</text>
+
+  <!-- Left Card: AI Agent & LLM Layer -->
+  <g transform="translate(50, 110)">
+    <rect width="250" height="400" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#softShadow)" />
+    <rect x="20" y="20" width="38" height="38" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5" />
+    <text x="39" y="44" fill="#3b82f6" font-family="system-ui" font-size="16" font-weight="bold" text-anchor="middle">AI</text>
+    <text x="70" y="38" fill="#0f172a" font-family="system-ui" font-size="16" font-weight="700">Client Layer</text>
+    <text x="70" y="55" fill="#64748b" font-family="system-ui" font-size="12">Agents &amp; Workflows</text>
+
+    <!-- Sub items -->
+    <rect x="20" y="80" width="210" height="60" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+    <text x="35" y="106" fill="#1e293b" font-family="system-ui" font-size="13" font-weight="600">Claude Desktop / IDE</text>
+    <text x="35" y="125" fill="#64748b" font-family="system-ui" font-size="11">JSON-RPC / stdio transport</text>
+
+    <rect x="20" y="155" width="210" height="60" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+    <text x="35" y="181" fill="#1e293b" font-family="system-ui" font-size="13" font-weight="600">Autonomous Swarms</text>
+    <text x="35" y="200" fill="#64748b" font-family="system-ui" font-size="11">ResearchBot / DevOpsBot</text>
+
+    <rect x="20" y="230" width="210" height="60" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+    <text x="35" y="256" fill="#1e293b" font-family="system-ui" font-size="13" font-weight="600">n8n Orchestrator</text>
+    <text x="35" y="275" fill="#64748b" font-family="system-ui" font-size="11">Enterprise workflow nodes</text>
+
+    <rect x="20" y="305" width="210" height="60" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+    <text x="35" y="331" fill="#1e293b" font-family="system-ui" font-size="13" font-weight="600">React Operations UI</text>
+    <text x="35" y="350" fill="#64748b" font-family="system-ui" font-size="11">Bilingual glassmorphic dashboard</text>
+  </g>
+
+  <!-- Center Card: Sentinel Mesh Runtime Proxy -->
+  <g transform="translate(350, 110)">
+    <rect width="300" height="400" rx="16" fill="#ffffff" stroke="#4f46e5" stroke-width="2" filter="url(#proxyShadow)" />
+    
+    <rect x="20" y="20" width="38" height="38" rx="10" fill="url(#proxyGrad)" />
+    <text x="39" y="44" fill="#ffffff" font-family="system-ui" font-size="16" font-weight="bold" text-anchor="middle">S</text>
+    <text x="70" y="38" fill="#0f172a" font-family="system-ui" font-size="16" font-weight="700">Sentinel Mesh Proxy</text>
+    <text x="70" y="55" fill="#4f46e5" font-family="system-ui" font-size="12" font-weight="600">Zero-Trust ASGI Gateway</text>
+
+    <!-- Sub items -->
+    <rect x="20" y="75" width="260" height="52" rx="10" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1" />
+    <text x="35" y="98" fill="#3730a3" font-family="system-ui" font-size="13" font-weight="700">1. Deny-by-Default Gate</text>
+    <text x="35" y="115" fill="#4f46e5" font-family="system-ui" font-size="11">Deterministic rule &amp; rate limit checks</text>
+
+    <rect x="20" y="137" width="260" height="52" rx="10" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1" />
+    <text x="35" y="160" fill="#3730a3" font-family="system-ui" font-size="13" font-weight="700">2. JSONSchema &amp; Fuzzer</text>
+    <text x="35" y="177" fill="#4f46e5" font-family="system-ui" font-size="11">Prototype pollution &amp; boundary validator</text>
+
+    <rect x="20" y="199" width="260" height="52" rx="10" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1" />
+    <text x="35" y="222" fill="#3730a3" font-family="system-ui" font-size="13" font-weight="700">3. FIDO2 / WebAuthn Guard</text>
+    <text x="35" y="239" fill="#4f46e5" font-family="system-ui" font-size="11">Hardware key biometric approval</text>
+
+    <rect x="20" y="261" width="260" height="52" rx="10" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1" />
+    <text x="35" y="284" fill="#3730a3" font-family="system-ui" font-size="13" font-weight="700">4. Streaming Secret Redactor</text>
+    <text x="35" y="301" fill="#4f46e5" font-family="system-ui" font-size="11">Sliding-window SSE / WS filter</text>
+
+    <rect x="20" y="323" width="260" height="52" rx="10" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1" />
+    <text x="35" y="346" fill="#3730a3" font-family="system-ui" font-size="13" font-weight="700">5. Merkle Tree Ledger</text>
+    <text x="35" y="363" fill="#4f46e5" font-family="system-ui" font-size="11">RFC 6962 tamper-evident root &amp; proofs</text>
+  </g>
+
+  <!-- Right Card: Target MCP Servers -->
+  <g transform="translate(700, 110)">
+    <rect width="250" height="400" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#softShadow)" />
+    <rect x="20" y="20" width="38" height="38" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5" />
+    <text x="39" y="44" fill="#10b981" font-family="system-ui" font-size="16" font-weight="bold" text-anchor="middle">S</text>
+    <text x="70" y="38" fill="#0f172a" font-family="system-ui" font-size="16" font-weight="700">MCP Servers</text>
+    <text x="70" y="55" fill="#64748b" font-family="system-ui" font-size="12">Tools &amp; Executables</text>
+
+    <!-- Sub items -->
+    <rect x="20" y="80" width="210" height="60" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+    <text x="35" y="106" fill="#1e293b" font-family="system-ui" font-size="13" font-weight="600">Filesystem Server</text>
+    <text x="35" y="125" fill="#64748b" font-family="system-ui" font-size="11">Path-traversal shielded</text>
+
+    <rect x="20" y="155" width="210" height="60" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+    <text x="35" y="181" fill="#1e293b" font-family="system-ui" font-size="13" font-weight="600">Database &amp; SQL Server</text>
+    <text x="35" y="200" fill="#64748b" font-family="system-ui" font-size="11">Tenancy &amp; IDOR partitioned</text>
+
+    <rect x="20" y="230" width="210" height="60" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+    <text x="35" y="256" fill="#1e293b" font-family="system-ui" font-size="13" font-weight="600">Shell / Cloud Exec</text>
+    <text x="35" y="275" fill="#64748b" font-family="system-ui" font-size="11">Seccomp &amp; eBPF sandboxed</text>
+
+    <rect x="20" y="305" width="210" height="60" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+    <text x="35" y="331" fill="#1e293b" font-family="system-ui" font-size="13" font-weight="600">External Web APIs</text>
+    <text x="35" y="350" fill="#64748b" font-family="system-ui" font-size="11">Internal loopback/SSRF blocked</text>
+  </g>
+
+  <!-- Connectors -->
+  <line x1="300" y1="310" x2="350" y2="310" stroke="#4f46e5" stroke-width="3" stroke-dasharray="6,4" />
+  <line x1="650" y1="310" x2="700" y2="310" stroke="#10b981" stroke-width="3" stroke-dasharray="6,4" />
+</svg>
