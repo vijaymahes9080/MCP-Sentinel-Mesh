@@ -1,0 +1,96 @@
+{
+  "name": "Hardened CRM Ingestion Workflow with Sentinel Governance",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "crm-lead-intake-secure",
+        "httpMethod": "POST",
+        "authentication": "headerAuth"
+      },
+      "id": "node-1-sec-webhook",
+      "name": "Authenticated Intake Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const payload = $input.first().json;\nconst sanitizedLead = {\n  email: String(payload.email || '').slice(0, 128),\n  name: String(payload.name || '').slice(0, 64)\n};\nreturn sanitizedLead;"
+      },
+      "id": "node-2-sec-code",
+      "name": "Input Sanitizer",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "resume": "webhook",
+        "approvalMessage": "Review new lead ingestion before sync"
+      },
+      "id": "node-3-approval",
+      "name": "Human Approval Gate",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.crm-provider.internal/v1/leads",
+        "method": "POST",
+        "options": {
+          "timeout": 5000,
+          "allowUnauthorizedCerts": false
+        }
+      },
+      "id": "node-4-sec-http",
+      "name": "Target CRM Dispatcher",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {},
+      "id": "node-5-error-trigger",
+      "name": "Error Trigger Handler",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [240, 500]
+    }
+  ],
+  "connections": {
+    "Authenticated Intake Webhook": {
+      "main": [
+        [
+          {
+            "node": "Input Sanitizer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Input Sanitizer": {
+      "main": [
+        [
+          {
+            "node": "Human Approval Gate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Human Approval Gate": {
+      "main": [
+        [
+          {
+            "node": "Target CRM Dispatcher",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

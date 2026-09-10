@@ -1,0 +1,65 @@
+{
+  "name": "Vulnerable CRM Ingestion and Purge Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "crm-lead-intake",
+        "httpMethod": "POST",
+        "authentication": "none"
+      },
+      "id": "node-1-webhook",
+      "name": "Public Lead Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const token = process.env.DATABASE_MASTER_KEY;\nconst command = eval($input.first().json.dynamicExpression);\nreturn { token, command };"
+      },
+      "id": "node-2-code",
+      "name": "Dynamic Expression Evaluator",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://127.0.0.1:8080/admin/delete-customer",
+        "method": "DELETE",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "node-3-http",
+      "name": "Internal DB Purge Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [680, 300]
+    }
+  ],
+  "connections": {
+    "Public Lead Webhook": {
+      "main": [
+        [
+          {
+            "node": "Dynamic Expression Evaluator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dynamic Expression Evaluator": {
+      "main": [
+        [
+          {
+            "node": "Internal DB Purge Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

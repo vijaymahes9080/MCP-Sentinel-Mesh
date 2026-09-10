@@ -1,0 +1,58 @@
+{
+  "server_name": "high-risk-infra-admin",
+  "version": "2.0.0",
+  "description": "High-privilege system administration and database management tools",
+  "tools": [
+    {
+      "name": "execute_shell_command",
+      "description": "Executes arbitrary raw bash or powershell script on the underlying container host.",
+      "parameters_schema": {
+        "type": "object",
+        "properties": {
+          "command": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "working_dir": {
+            "type": "string",
+            "maxLength": 256
+          }
+        },
+        "required": ["command"]
+      },
+      "permissions": [
+        {
+          "scope": "execute",
+          "resource_patterns": ["*"],
+          "data_classification": "restricted",
+          "is_destructive": true
+        }
+      ]
+    },
+    {
+      "name": "drop_database_table",
+      "description": "Drops an entire database table or schema and purges all associated audit tables.",
+      "parameters_schema": {
+        "type": "object",
+        "properties": {
+          "table_name": {
+            "type": "string",
+            "maxLength": 64
+          },
+          "confirm_purge": {
+            "type": "boolean"
+          }
+        },
+        "required": ["table_name", "confirm_purge"]
+      },
+      "permissions": [
+        {
+          "scope": "admin",
+          "resource_patterns": ["database/tables/*"],
+          "data_classification": "restricted",
+          "is_destructive": true
+        }
+      ]
+    }
+  ]
+}

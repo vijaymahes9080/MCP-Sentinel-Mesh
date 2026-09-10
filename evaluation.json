@@ -1,0 +1,24 @@
+{
+  "benchmark_date": "2026-09-10T14:08:46.804696",
+  "total_adversarial_cases": 80,
+  "adversarial_pass_rate_pct": 97.5,
+  "detection_precision_pct": 100.0,
+  "detection_recall_pct": 100.0,
+  "false_positive_rate_pct": 0.0,
+  "unauthorized_calls_permitted": 0,
+  "critical_secret_leaks": 0,
+  "prompt_injection_detection_pct": 100.0,
+  "median_proxy_latency_ms": 0.009,
+  "p95_proxy_latency_ms": 0.015,
+  "p99_proxy_latency_ms": 0.021,
+  "scan_throughput_manifests_per_sec": 1484.7,
+  "report_reproducibility_pct": 100.0,
+  "audit_chain_valid": true,
+  "targets_achieved": {
+    "detection_ge_90": true,
+    "zero_unauthorized_calls": true,
+    "zero_secret_leaks": true,
+    "latency_lt_500ms": true,
+    "reproducibility_ge_99": true
+  }
+}

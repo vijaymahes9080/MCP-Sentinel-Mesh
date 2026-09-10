@@ -1,0 +1,30 @@
+# syntax=docker/dockerfile:1
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install build essentials
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy source trees
+COPY backend/ ./backend/
+COPY scanner/ ./scanner/
+COPY proxy/ ./proxy/
+COPY mcp-samples/ ./mcp-samples/
+COPY n8n-samples/ ./n8n-samples/
+COPY knowledge-base/ ./knowledge-base/
+COPY knowledge_base.py sentinel.py ./
+
+EXPOSE 8000
+
+ENV PYTHONUNBUFFERED=1
+ENV PORT=8000
+
+CMD ["uvicorn", "proxy.server:app", "--host", "0.0.0.0", "--port", "8000"]

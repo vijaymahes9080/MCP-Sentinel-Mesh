@@ -1,0 +1,68 @@
+{
+  "server_name": "secure-telemetry-server",
+  "version": "1.0.0",
+  "description": "Hardened, read-only telemetry and weather service",
+  "tools": [
+    {
+      "name": "get_system_health",
+      "description": "Retrieves current CPU, memory, and uptime metrics for the local host without mutating state.",
+      "parameters_schema": {
+        "type": "object",
+        "properties": {
+          "metric_type": {
+            "type": "string",
+            "enum": ["all", "cpu", "memory", "uptime"],
+            "maxLength": 16
+          }
+        },
+        "required": ["metric_type"]
+      },
+      "return_schema": {
+        "type": "object",
+        "properties": {
+          "cpu_percent": {"type": "number"},
+          "memory_used_mb": {"type": "number"},
+          "status": {"type": "string"}
+        }
+      },
+      "permissions": [
+        {
+          "scope": "read",
+          "resource_patterns": ["system/telemetry"],
+          "data_classification": "internal",
+          "is_destructive": false
+        }
+      ]
+    },
+    {
+      "name": "lookup_weather",
+      "description": "Fetches current weather conditions for a specified city name.",
+      "parameters_schema": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string",
+            "maxLength": 64,
+            "pattern": "^[a-zA-Z\\s\\-]+$"
+          }
+        },
+        "required": ["city"]
+      },
+      "return_schema": {
+        "type": "object",
+        "properties": {
+          "temperature_c": {"type": "number"},
+          "condition": {"type": "string"}
+        }
+      },
+      "permissions": [
+        {
+          "scope": "read",
+          "resource_patterns": ["weather/*"],
+          "data_classification": "public",
+          "is_destructive": false
+        }
+      ]
+    }
+  ]
+}
