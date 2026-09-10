@@ -158,7 +158,8 @@ def generate_html_report():
           <div class="subtitle">Zero-Trust Security Gateway & Adversarial Benchmark Dashboard</div>
         </div>
       </div>
-      <div>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <a href="./dashboard/index.html" class="badge" style="background: rgba(99, 102, 241, 0.2); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.4); text-decoration: none; padding: 0.5rem 1rem; cursor: pointer;">🖥️ Launch Full React Dashboard</a>
         <span class="badge badge-success">● SYSTEM ENFORCING</span>
       </div>
     </header>

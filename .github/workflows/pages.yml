@@ -1,13 +1,9 @@
-name: Deploy Interactive Benchmark Dashboard to GitHub Pages
+name: Build and Deploy Full Project to GitHub Pages
 
 on:
   push:
     branches:
       - main
-    paths:
-      - 'docs/**'
-      - 'scripts/generate_visual_report.py'
-      - 'evaluation.json'
   workflow_dispatch:
 
 permissions:
@@ -20,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build-and-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -29,22 +25,52 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'frontend/package-lock.json'
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Generate Visual Benchmark Dashboard
+      - name: Install Python Dependencies & Generate Visual Benchmark Report
         run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
           python scripts/generate_visual_report.py
+
+      - name: Install Frontend Dependencies & Build Production Dashboard
+        run: |
+          cd frontend
+          npm ci
+          npm run build
+
+      - name: Assemble Deployment Package
+        run: |
+          # Create publication root directory
+          mkdir -p public_site
+          # Copy React App production build to root
+          cp -r frontend/dist/* public_site/
+          # Include interactive benchmark report
+          cp docs/index.html public_site/benchmark.html
+          # Include visual assets
+          mkdir -p public_site/assets
+          cp -r assets/* public_site/assets/ || true
+          # Include docs markdown
+          mkdir -p public_site/docs
+          cp -r docs/* public_site/docs/ || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Upload Artifact
+      - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'docs/'
+          path: 'public_site/'
 
       - name: Deploy to GitHub Pages
         id: deployment
