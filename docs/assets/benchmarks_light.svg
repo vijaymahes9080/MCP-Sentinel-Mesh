@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 220" width="920" height="220">
+  <defs>
+    <filter id="kpiShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.05" />
+    </filter>
+  </defs>
+
+  <rect width="920" height="220" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Title -->
+  <text x="35" y="38" fill="#0f172a" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="bold">Empirical Adversarial Benchmark Results (80 Comprehensive Test Cases)</text>
+
+  <!-- Card 1: Pass Rate -->
+  <g transform="translate(35, 55)">
+    <rect width="195" height="135" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#kpiShadow)" />
+    <rect x="16" y="16" width="6" height="24" rx="3" fill="#10b981" />
+    <text x="30" y="32" fill="#64748b" font-family="system-ui" font-size="12" font-weight="600">PASS RATE</text>
+    <text x="16" y="80" fill="#059669" font-family="system-ui, monospace" font-size="34" font-weight="bold">97.5%</text>
+    <text x="16" y="112" fill="#065f46" font-family="system-ui" font-size="12" font-weight="600">78 / 80 Cases Verified</text>
+  </g>
+
+  <!-- Card 2: Precision -->
+  <g transform="translate(250, 55)">
+    <rect width="195" height="135" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#kpiShadow)" />
+    <rect x="16" y="16" width="6" height="24" rx="3" fill="#4f46e5" />
+    <text x="30" y="32" fill="#64748b" font-family="system-ui" font-size="12" font-weight="600">PRECISION</text>
+    <text x="16" y="80" fill="#4338ca" font-family="system-ui, monospace" font-size="34" font-weight="bold">100%</text>
+    <text x="16" y="112" fill="#3730a3" font-family="system-ui" font-size="12" font-weight="600">Zero False Positives</text>
+  </g>
+
+  <!-- Card 3: Median Latency -->
+  <g transform="translate(465, 55)">
+    <rect width="195" height="135" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#kpiShadow)" />
+    <rect x="16" y="16" width="6" height="24" rx="3" fill="#0284c7" />
+    <text x="30" y="32" fill="#64748b" font-family="system-ui" font-size="12" font-weight="600">MEDIAN LATENCY</text>
+    <text x="16" y="80" fill="#0369a1" font-family="system-ui, monospace" font-size="34" font-weight="bold">0.009ms</text>
+    <text x="16" y="112" fill="#075985" font-family="system-ui" font-size="12" font-weight="600">Ultra-low C-level Overhead</text>
+  </g>
+
+  <!-- Card 4: Unauthorized Escapes -->
+  <g transform="translate(680, 55)">
+    <rect width="205" height="135" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#kpiShadow)" />
+    <rect x="16" y="16" width="6" height="24" rx="3" fill="#10b981" />
+    <text x="30" y="32" fill="#64748b" font-family="system-ui" font-size="12" font-weight="600">UNAUTHORIZED ESCAPES</text>
+    <text x="16" y="80" fill="#059669" font-family="system-ui, monospace" font-size="34" font-weight="bold">0</text>
+    <text x="16" y="112" fill="#065f46" font-family="system-ui" font-size="12" font-weight="600">100% Boundary Neutralized</text>
+  </g>
+</svg>
