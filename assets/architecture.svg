@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" width="1000" height="560">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="primaryGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="560" rx="16" fill="url(#bgGrad)" />
+
+  <!-- Title -->
+  <text x="50" y="55" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="bold">MCP Sentinel Mesh - Architecture Overview</text>
+  <text x="50" y="82" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="14">Zero-Trust Runtime Policy Proxy, Adversarial Evaluation Framework &amp; Merkle Audit Ledger</text>
+
+  <!-- Left: AI Agent & LLM Layer -->
+  <g transform="translate(50, 120)">
+    <rect width="240" height="380" rx="14" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+    <rect x="20" y="20" width="40" height="40" rx="10" fill="#3b82f6" fill-opacity="0.2" stroke="#3b82f6" stroke-width="1.5" />
+    <text x="75" y="45" fill="#f8fafc" font-family="system-ui" font-size="16" font-weight="600">AI Clients</text>
+    <text x="75" y="62" fill="#64748b" font-family="system-ui" font-size="12">Autonomous Agents</text>
+
+    <!-- Sub items -->
+    <rect x="20" y="90" width="200" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1" />
+    <text x="35" y="120" fill="#e2e8f0" font-family="system-ui" font-size="13">Claude Desktop / IDE</text>
+
+    <rect x="20" y="155" width="200" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1" />
+    <text x="35" y="185" fill="#e2e8f0" font-family="system-ui" font-size="13">Autonomous Swarms</text>
+
+    <rect x="20" y="220" width="200" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1" />
+    <text x="35" y="250" fill="#e2e8f0" font-family="system-ui" font-size="13">n8n Workflow Nodes</text>
+
+    <rect x="20" y="285" width="200" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1" />
+    <text x="35" y="315" fill="#e2e8f0" font-family="system-ui" font-size="13">Custom API Callers</text>
+  </g>
+
+  <!-- Center: Sentinel Mesh Runtime Proxy -->
+  <g transform="translate(350, 120)">
+    <rect width="300" height="380" rx="14" fill="url(#cardGrad)" stroke="#6366f1" stroke-width="2" filter="url(#glow)" fill-opacity="0.9" />
+    <rect width="300" height="380" rx="14" fill="url(#cardGrad)" stroke="#6366f1" stroke-width="2" />
+    
+    <rect x="20" y="20" width="40" height="40" rx="10" fill="url(#primaryGrad)" />
+    <text x="75" y="45" fill="#f8fafc" font-family="system-ui" font-size="16" font-weight="600">Sentinel Mesh Proxy</text>
+    <text x="75" y="62" fill="#818cf8" font-family="system-ui" font-size="12">Port 8000 (FastAPI / ASGI)</text>
+
+    <!-- Components -->
+    <rect x="20" y="80" width="260" height="45" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+    <text x="35" y="108" fill="#c7d2fe" font-family="system-ui" font-size="13" font-weight="600">1. Deny-by-Default Policy</text>
+
+    <rect x="20" y="135" width="260" height="45" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+    <text x="35" y="163" fill="#c7d2fe" font-family="system-ui" font-size="13" font-weight="600">2. JSONSchema &amp; AST Validator</text>
+
+    <rect x="20" y="190" width="260" height="45" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+    <text x="35" y="218" fill="#c7d2fe" font-family="system-ui" font-size="13" font-weight="600">3. FIDO2 / Human Approval Gate</text>
+
+    <rect x="20" y="245" width="260" height="45" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+    <text x="35" y="273" fill="#c7d2fe" font-family="system-ui" font-size="13" font-weight="600">4. Streaming Secret Redactor</text>
+
+    <rect x="20" y="300" width="260" height="45" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+    <text x="35" y="328" fill="#c7d2fe" font-family="system-ui" font-size="13" font-weight="600">5. Merkle Tree Audit Ledger</text>
+  </g>
+
+  <!-- Right: Target MCP Servers -->
+  <g transform="translate(710, 120)">
+    <rect width="240" height="380" rx="14" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+    <rect x="20" y="20" width="40" height="40" rx="10" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="1.5" />
+    <text x="75" y="45" fill="#f8fafc" font-family="system-ui" font-size="16" font-weight="600">MCP Servers</text>
+    <text x="75" y="62" fill="#64748b" font-family="system-ui" font-size="12">Tools &amp; Executables</text>
+
+    <!-- Sub items -->
+    <rect x="20" y="90" width="200" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1" />
+    <text x="35" y="120" fill="#e2e8f0" font-family="system-ui" font-size="13">Filesystem Server</text>
+
+    <rect x="20" y="155" width="200" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1" />
+    <text x="35" y="185" fill="#e2e8f0" font-family="system-ui" font-size="13">Database &amp; SQL Server</text>
+
+    <rect x="20" y="220" width="200" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1" />
+    <text x="35" y="250" fill="#e2e8f0" font-family="system-ui" font-size="13">Cloud / Shell Exec</text>
+
+    <rect x="20" y="285" width="200" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1" />
+    <text x="35" y="315" fill="#e2e8f0" font-family="system-ui" font-size="13">External Web APIs</text>
+  </g>
+
+  <!-- Connectors -->
+  <path d="M 290 310 L 350 310" stroke="#6366f1" stroke-width="3" stroke-dasharray="6,4" />
+  <path d="M 650 310 L 710 310" stroke="#10b981" stroke-width="3" stroke-dasharray="6,4" />
+</svg>
