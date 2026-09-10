@@ -25,26 +25,29 @@ class StreamingSecretRedactor:
         """
         self.buffer += token
 
-        # If buffer is shorter than window, hold to inspect potential split secret
-        if len(self.buffer) < self.window_size:
-            return ""
+        # Continuously sanitize the accumulated buffer so full matches are redacted immediately
+        sanitized, count = OutputRedactor.sanitize_text(self.buffer)
+        if count > 0:
+            self.redactions_count += count
+            self.buffer = sanitized
 
-        # Check for potential secrets in the leading portion
-        slice_to_inspect = self.buffer[:-self.window_size]
-        trailing_buffer = self.buffer[-self.window_size:]
+        # If buffer exceeds window_size, safely emit the leading portion older than window_size
+        if len(self.buffer) > self.window_size:
+            emit_len = len(self.buffer) - self.window_size
+            to_emit = self.buffer[:emit_len]
+            self.buffer = self.buffer[emit_len:]
+            return to_emit
 
-        # Run redactor on leading slice
-        sanitized_slice, count = OutputRedactor.sanitize_text(slice_to_inspect)
-        self.redactions_count += count
-        self.buffer = trailing_buffer
-
-        return sanitized_slice
+        return ""
 
     def finish(self) -> str:
         """Flushes and sanitizes all remaining bytes in the buffer upon stream closure."""
         if not self.buffer:
             return ""
         sanitized_tail, count = OutputRedactor.sanitize_text(self.buffer)
-        self.redactions_count += count
+        if count > 0:
+            self.redactions_count += count
+            self.buffer = sanitized_tail
+        tail = self.buffer
         self.buffer = ""
-        return sanitized_tail
+        return tail
