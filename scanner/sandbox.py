@@ -62,8 +62,12 @@ class SandboxProfileGenerator:
         """
         all_scopes = set()
         for t in tools:
-            for s in t.required_scopes:
-                all_scopes.add(s)
+            if hasattr(t, "permissions"):
+                for p in t.permissions:
+                    all_scopes.add(p.scope if hasattr(p, "scope") else p)
+            if hasattr(t, "required_scopes"):
+                for s in t.required_scopes:
+                    all_scopes.add(s)
 
         blocked_syscalls = list(cls.BASE_DISALLOWED_SYSCALLS)
 
@@ -92,10 +96,16 @@ class SandboxProfileGenerator:
     @classmethod
     def generate_ebpf_network_rules(cls, tools: List[ToolDefinition]) -> Dict[str, Any]:
         """Generates eBPF tracepoint socket connection filters."""
-        needs_network = any(
-            PermissionScope.NETWORK in t.required_scopes or PermissionScope.ADMIN in t.required_scopes
-            for t in tools
-        )
+        all_scopes = set()
+        for t in tools:
+            if hasattr(t, "permissions"):
+                for p in t.permissions:
+                    all_scopes.add(p.scope if hasattr(p, "scope") else p)
+            if hasattr(t, "required_scopes"):
+                for s in t.required_scopes:
+                    all_scopes.add(s)
+
+        needs_network = PermissionScope.NETWORK in all_scopes or PermissionScope.ADMIN in all_scopes
         return {
             "version": "sentinel.mesh/ebpf/v1",
             "tracepoint": "sock:inet_sock_set_state",
