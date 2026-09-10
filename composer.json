@@ -1,0 +1,14 @@
+{
+    "name": "vijaymahes9080/mcp-sentinel-mesh",
+    "description": "MCP-Sentinel-Mesh - Enterprise Distributed Model Context Protocol Sentinel Mesh for Multi-Agent Security, Policy Enforcement & Orchestration",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vijay Mahes",
+            "email": "Vijaypradhap2004@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {}
+}
